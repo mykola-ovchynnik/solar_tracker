@@ -42,6 +42,4 @@ void loop()
   {
     rotate_manual();
   }
-
-  printf("--------------------\n");
 }

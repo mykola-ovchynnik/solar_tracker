@@ -7,13 +7,6 @@ int sensitivity = 10;
 int servoIncrement = 1;
 int servoInitialPosition = 90; // to be adjusted as needed for the reset
 
-void resetServos()
-{
-    // Reset servo positions to initial values
-    servo_updown.write(servoInitialPosition);    // Initial position for up-down servo
-    servo_leftright.write(servoInitialPosition); // Initial position for left-right servo
-}
-
 void rotate_manual()
 {
     printf("manual\n");
@@ -54,11 +47,17 @@ void rotate_auto()
     rotate_LeftRight();
 }
 
+void resetServos()
+{
+    // Reset servo positions to initial values
+    servo_updown.write(servoInitialPosition);    // Initial position for up-down servo
+    servo_leftright.write(servoInitialPosition); // Initial position for left-right servo
+}
+
 void rotate_UpDown()
 {
     char shouldRotateUD = shouldRotateUpDown();
 
-    printf("Up-Down rotation: ");
     if (shouldRotateUD != 'N')
     {
         int newUDAngle = servo_updown.read() + (shouldRotateUD == 'U' ? servoIncrement : -servoIncrement);
@@ -76,7 +75,6 @@ void rotate_LeftRight()
 {
     char shouldRotateLR = shouldRotateLeftRight();
 
-    printf("Left-Right rotation: ");
     if (shouldRotateLR != 'N')
     {
         int newLRAngle = servo_leftright.read() + (shouldRotateLR == 'R' ? servoIncrement : -servoIncrement);

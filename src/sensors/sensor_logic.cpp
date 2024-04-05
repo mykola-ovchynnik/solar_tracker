@@ -11,8 +11,6 @@ void readAllLdrSensors()
 
     if (millis() - sensorLastReadTime >= sensorReadInterval)
     {
-        printf("Sensors reading: \n");
-
         ldrStateTR = analogRead(PIN_LDR_TR);
         printf("LDR Top Right: %d\n", ldrStateTR);
 
@@ -43,8 +41,8 @@ int getLeftRightSensorDiff()
     int avgRight = calcAverage(ldrStateTR, ldrStateBR);
     int avgLeft = calcAverage(ldrStateTL, ldrStateBL);
 
-    printf("Average Right: %d\n", avgRight);
-    printf("Average left: %d\n", avgLeft);
+    // printf("Average Right: %d\n", avgRight);
+    // printf("Average left: %d\n", avgLeft);
 
     return calcDifference(avgRight, avgLeft);
 };
@@ -54,8 +52,8 @@ int getUpDownSensorDiff()
     int avgTop = calcAverage(ldrStateTR, ldrStateTL);
     int avgBottom = calcAverage(ldrStateBR, ldrStateBL);
 
-    printf("Average top: %d\n", avgTop);
-    printf("Average bottom: %d\n", avgBottom);
+    // printf("Average top: %d\n", avgTop);
+    // printf("Average bottom: %d\n", avgBottom);
 
     return calcDifference(avgTop, avgBottom);
 }
